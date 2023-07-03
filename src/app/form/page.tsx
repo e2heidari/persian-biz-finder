@@ -3,27 +3,52 @@
 import React, { useState, ChangeEvent, FormEvent } from 'react';
 import styled from 'styled-components';
 
-
 const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin: 20px;
+  max-width: 500px;
+  width: 100%;
+  @media (max-width: 768px) {
+    margin: 10px;
+    align-items: center;
+  }
 `;
 
 const Label = styled.label`
   margin-bottom: 5px;
+  @media (max-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 
 const Input = styled.input`
-  padding: 10px;
+padding: 10px;
   margin-bottom: 10px;
+  width: 100%;
+  @media (max-width: 768px) {
+    margin-bottom: 10px;
+  }
 `;
 
+const InputAddress = styled.input`
+padding: 10px;
+margin-bottom: 10px;
+width: 100%;
+height: 100px; /* Adjust the height as per your requirement */
+resize: vertical;
+  @media (max-width: 768px) {
+    margin-bottom: 10px;
+  }
+`;
 const SubmitButton = styled.button`
   padding: 10px 20px;
   background-color: #f0f0f0;
   border: none;
   cursor: pointer;
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const page: React.FC = () => {
@@ -69,12 +94,12 @@ const page: React.FC = () => {
           </Label>
           <Label>
             Address:
-            <Input type="text" value={address} onChange={handleAddressChange} />
+            <InputAddress type="text" value={address} onChange={handleAddressChange} />
           </Label>
           <Label>
-            Operating Hours:
-            <Input type="text" value={hours} onChange={handleHoursChange} />
-          </Label>
+  Operating Hours (e.g., Mon-Fri: 9am-5pm):
+  <Input type="text" value={hours} onChange={handleHoursChange} />
+</Label>
           <Label>
             Image:
             <Input type="file" onChange={handleImageChange} />
